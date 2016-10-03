@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://bertramn.github.com/issues"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://bertramn.github.com/issues"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:element name="Model">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Code">
+          <xsd:simpleType>
+            <xsd:restriction base="xsd:string">
+              <xsd:pattern value="[A-Z]{3}\-[0-9]{4}"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+        </xsd:element>
+        <xsd:element ref="tns:Status" minOccurs="0"/>
+        <xsd:element name="Description" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Status" type="tns:Status"/>
+  <xsd:simpleType name="Status">
+    <xsd:restriction base="xsd:NMTOKEN">
+      <xsd:enumeration value="ON"/>
+      <xsd:enumeration value="OFF"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>
